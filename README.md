@@ -8,22 +8,14 @@ This README would normally document whatever steps are necessary to get your app
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+### Deno/MQTT ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+  # Run the program 
+  deno run main.ts
 
-### Contribution guidelines ###
+  # Run the program and watch for file changes
+  deno task dev
 
-* Writing tests
-* Code review
-* Other guidelines
+  # Run the tests
+  deno test
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact

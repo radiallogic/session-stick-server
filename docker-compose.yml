@@ -1,0 +1,57 @@
+version: "3"
+services:
+  # redis:
+  #   container_name: sessionstick-redis
+  #   image: redis:alpine
+  #   restart: unless-stopped
+  #   command: /bin/sh -c "redis-server --requirepass $$REDIS_PASSWORD"
+  #   env_file:
+  #     - .env.local
+  #   ports:
+  #     - 6379:6379
+  #   networks:
+  #     - sessionstick-network
+  mqtt:
+    container_name: mqtt
+    build:
+      context: ./mqtt
+      dockerfile: Dockerfile
+    env_file:
+      - .env.local
+    ports:
+      - "1993:1993"
+      - "1883:1883"
+    volumes:
+      - ./mqtt/:/app/
+    networks:
+      - sessionstick-network
+  display:
+    container_name: display
+    build:
+      context: ./display
+      dockerfile: Dockerfile
+    env_file:
+      - .env.local
+    ports:
+      - "5005:5005"
+      - "3000:3000"
+    volumes:
+      - ./display:/app/
+    networks:
+      - sessionstick-network
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - sessionstick-network
+
+volumes:
+  mongodb-data:
+
+networks:
+  sessionstick-network:
+    driver: bridge
