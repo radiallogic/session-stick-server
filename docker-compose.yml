@@ -41,7 +41,7 @@ services:
       - sessionstick-network
   mongodb:
     image: mongo:latest
-    container_name: mongodb
+    container_name: sessionstick-mongodb
     ports:
       - "27017:27017"
     volumes:
