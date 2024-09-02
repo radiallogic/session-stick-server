@@ -11,5 +11,5 @@ RUN pip install pymongo
 
 # COPY . .
 
-# CMD [ "python", "./main.py" ]
-CMD ["tail", "-f", "/dev/null"]
+CMD [ "python", "./main.py" ]
+#CMD ["tail", "-f", "/dev/null"]
