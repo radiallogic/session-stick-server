@@ -1,23 +1,15 @@
-FROM denoland/deno:1.43.1
+FROM python:3-alpine
 
-# The port that your application listens to.
-EXPOSE 1993
+WORKDIR /usr/src/app
 
-WORKDIR /app
+# COPY requirements.txt ./
+# RUN pip install --no-cache-dir -r requirements.txt
 
-# Prefer not to run as root.
-# USER deno
+RUN apk update && apk add bash
+RUN pip install paho-mqtt
+RUN pip install pymongo
 
-# # Cache the dependencies as a layer (the following two steps are re-run only when deps.ts is modified).
-# # Ideally cache deps.ts will download and compile _all_ external files used in main.ts.
-# COPY deps.ts .
-# RUN deno cache deps.ts
+# COPY . .
 
-# # These steps will be re-run upon each file change in your working directory:
-# ADD . .
-# # Compile the main app so that it doesn't need to be compiled each startup/entry.
-# RUN deno cache main.ts
-
-# CMD ["run", "--allow-net", "main.ts"]
-
+# CMD [ "python", "./main.py" ]
 CMD ["tail", "-f", "/dev/null"]

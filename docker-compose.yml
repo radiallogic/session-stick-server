@@ -22,7 +22,7 @@ services:
       - "1993:1993"
       - "1883:1883"
     volumes:
-      - ./mqtt/:/app/
+      - ./mqtt/:/usr/src/app/
     networks:
       - sessionstick-network
   display:
@@ -41,7 +41,7 @@ services:
       - sessionstick-network
   mongodb:
     image: mongo:latest
-    container_name: sessionstick-mongodb
+    container_name: stick-mongodb
     ports:
       - "27017:27017"
     volumes:
