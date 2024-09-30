@@ -2,6 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app/
 
-#CMD ["tail", "-f", "/dev/null"]
+RUN apk update && apk add bash openntpd
 
-CMD ["yarn", "dev"]
+CMD ["tail", "-f", "/dev/null"]
+# CMD ["yarn", "dev"]

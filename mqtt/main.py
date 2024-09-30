@@ -1,10 +1,10 @@
 import paho.mqtt.client as mqtt
 import pymongo
-
+from datetime import datetime
 
 def process_message(message):
     b'333.37,93.43,93.43,15:46:39+08,3527,16,2,27.73,50.53'
-    str = message.decode('utf-8')
+    str = message.payload.decode('utf-8')
     print(str) 
     array = str.split(',')
 
@@ -12,7 +12,7 @@ def process_message(message):
         "heading": array[0],
         "average_speed": array[1],
         "gust_speed": array[2],
-        "time": array[3],
+        "time": datetime.strptime( array[3], "%H:%M:%S%z"),
         "battery_voltage":array[4],
         "battery_percent": array[5],
         "modem_signal_quality": array[6],

@@ -16,13 +16,13 @@ services:
     build:
       context: ./mqtt
       dockerfile: Dockerfile
-    env_file:
-      - .env.local
     ports:
       - "1993:1993"
       - "1883:1883"
     volumes:
       - ./mqtt/:/usr/src/app/
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       - sessionstick-network
   display:
@@ -31,12 +31,14 @@ services:
       context: ./display
       dockerfile: Dockerfile
     env_file:
-      - .env.local
+      - ./display/.env.local
     ports:
       - "5005:5005"
       - "3000:3000"
     volumes:
       - ./display:/app/
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       - sessionstick-network
   mongodb:
@@ -48,6 +50,7 @@ services:
       - mongodb-data:/data/db
     networks:
       - sessionstick-network
+
 
 volumes:
   mongodb-data:
