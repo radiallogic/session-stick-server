@@ -9,7 +9,7 @@ import {averageSpeed} from "../lib/15minAverageSpeed";
 import {speedTrend} from "../lib/15minSpeedTrend";
 
 import CanvasDirection from "./CanvasDirection";
-
+import Sparkline from './Sparkline';
 
 interface Props {
     records: DataMessage[]}
@@ -41,8 +41,7 @@ interface Props {
         </div>
 
 
-        {/* two Sparkline Charts
-        for wind and gust.  */}
+        <Sparkline data1={records} data2={records} width={300} height={100} />
     </div>
     )
 }
