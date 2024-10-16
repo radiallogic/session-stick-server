@@ -1,21 +1,21 @@
-# README #
+This project is the display portion of a hardware portable weatherstation to give you localised wind conditions for kite surfing and paragliding. 
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+# Layout and setup #
+docker compose up --build -d
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### Deno/MQTT ###
+## mqtt ## 
+The mqtt message ingestion, stores messages in the mongodb dataase starts on docker compose up. Uses python. 
 
-  # Run the program 
-  deno run main.ts
+## display ##
+Next.js app to calculate averages and display data on screen.  Need to run 
 
-  # Run the program and watch for file changes
-  deno task dev
+  yarn dev 
 
-  # Run the tests
-  deno test
+to start the development server.
+
+
+
+
 
