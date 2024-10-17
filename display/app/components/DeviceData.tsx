@@ -12,7 +12,8 @@ import CanvasDirection from "./CanvasDirection";
 import Sparkline from './Sparkline';
 
 interface Props {
-    records: DataMessage[]}
+    records: DataMessage[]
+}
 
  export const DeviceData = (props: Props) => {
     let records = props.records;
@@ -41,7 +42,7 @@ interface Props {
         </div>
 
 
-        <Sparkline data1={records} data2={records} width={300} height={100} />
+        <Sparkline records={records} width={300} height={100} />
     </div>
     )
 }
